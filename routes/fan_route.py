@@ -2,11 +2,9 @@ from fastapi import APIRouter
 from typing import Union
 
 
-from models.item import Item
+from data.models.item import Item
 
-router = APIRouter(
-    prefix="/items",
-    tags=["items"])
+router = APIRouter(prefix="/items", tags=["items"])
 
 
 @router.get("/{item_id}")
