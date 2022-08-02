@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from typing import Union
 
 
-from data.models.item import Item
+from data.models.fan import Fan
 
 router = APIRouter(prefix="/items", tags=["items"])
 
@@ -13,5 +13,5 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 
 @router.put("/{item_id}")
-def update_item(item_id: int, item: Item):
+def update_item(item_id: int, item: Fan):
     return {"item_name": item.name, "item_id": item_id}

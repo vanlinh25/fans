@@ -1,7 +1,11 @@
-import motor.motor_asyncio
+import pymongo
+DB_URL = "mongodb://localhost:27017/"
+DB_NAME = "test"
 
-MONGO_DETAILS = "mongodb://localhost:27017"
-
-client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_DETAILS)
-
-database = client.test
+def getConnection():
+    try:
+        client = pymongo.MongoClient(DB_URL)
+        db = client[DB_NAME]
+        return db
+    except:
+        print("error to connect db")
