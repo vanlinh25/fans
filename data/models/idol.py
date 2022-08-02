@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 from typing import Union
 
-from video import Video
-from image import Image
+from .video import Video
+from .image import Image
 
-class Fan(BaseModel):
+class Idol(BaseModel):
     title: Union[str, None] = None
     url: str
     thumbnail: Union[str, None] = None
