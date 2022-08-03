@@ -1,14 +1,20 @@
-from pydantic import BaseModel
+from pydantic import Field
 from typing import Union
+from beanie import Document
 
-from .video import Video
-from .image import Image
+from data.models.video import Video
+from data.models.image import Image
 
-class Idol(BaseModel):
+class Idol(Document):
+
     title: Union[str, None] = None
     url: str
     thumbnail: Union[str, None] = None
-    full_image: Union[str, None] = None
-    images: list[Image]=[]
-    videos: list=[Video]
+    full_image: Union[str, None] = Field(default=None, alias='full')
+    images: list[Image] = []
+    videos: list[Video] = []
     
+    class Settings:
+        name = "fans"
+
+Idol.update_forward_refs()
