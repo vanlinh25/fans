@@ -6,7 +6,7 @@ uvicorn main:app --reload
 #### http://localhost:8000/docs
 
 
-### 
-pip freeze > requirements.txt
 ### Install
+pip freeze > requirements.txt
+
 pip install -r requirements.txt
