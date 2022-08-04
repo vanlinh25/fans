@@ -21,7 +21,7 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def app_init():
-   initDB()
+   await initDB()
    
    
 app.include_router(idol_route.router)

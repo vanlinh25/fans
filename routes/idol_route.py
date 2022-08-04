@@ -1,3 +1,4 @@
+from beanie import PydanticObjectId
 from fastapi import APIRouter
 from typing import Union
 
@@ -12,5 +13,5 @@ async def read_item(size: Union[None, int] = 5):
 
 
 @router.get("/{id}",response_model=Idol)
-async def get_idol_by_id(id: str):
-    return await Idol.find_one({Idol.id: id})
+async def get_idol_by_id(id: PydanticObjectId):
+    return await Idol.get(id)

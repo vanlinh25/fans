@@ -4,7 +4,7 @@ from typing import Union
 from data.models.source import Source
 
 class Video(BaseModel):
-    source: list[Source]=[]
+    sources: list[Source]=[]
     fv_title: Union[str, None] = None
     splash: Union[str, None] = None
 
