@@ -2,16 +2,11 @@ import motor.motor_asyncio
 from beanie import init_beanie
 
 from data.models.idol import Idol
-
-DB_URL = "mongodb://localhost:27017/"
-DB_NAME = "test"
-# client = pymongo.MongoClient(DB_URL)
-# db = client[DB_NAME]
-# fan = db["fans"]
+from configs.settings import get_settings
 
 async def initDB():
-    client = motor.motor_asyncio.AsyncIOMotorClient(DB_URL)
-    await init_beanie(client[DB_NAME], document_models=[Idol])
+    client = motor.motor_asyncio.AsyncIOMotorClient(get_settings().db_url)
+    await init_beanie(client[get_settings().db_name], document_models=[Idol])
 
 
 
