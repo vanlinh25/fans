@@ -16,5 +16,6 @@ class Idol(Document):
     
     class Settings:
         name = "fans"
+        use_cache = True
 
 Idol.update_forward_refs()
