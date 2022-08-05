@@ -13,9 +13,10 @@ class Idol(Document):
     full_image: Union[str, None] = Field(default=None, alias='full')
     images: list[Image] = []
     videos: list[Video] = []
-    
+
     class Settings:
         name = "fans"
         use_cache = True
+
 
 Idol.update_forward_refs()
