@@ -1,12 +1,17 @@
-### run
+#### Run
 uvicorn main:app --reload
-
-#### http://localhost:8000
+### Doc
+####  http://localhost:8000
 
 #### http://localhost:8000/docs
 
+#### http://localhost:8000/graphql
 
 ### Install
-pip freeze > requirements.txt
+pip install pipreqs
+pipreqs . --force
 
 pip install -r requirements.txt
+
+### Deploy 
+deta new
