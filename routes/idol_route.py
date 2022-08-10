@@ -8,8 +8,8 @@ router = APIRouter(prefix="/idols", tags=["Idols"])
 
 
 @router.get("/", response_model=list[Idol])
-async def get_all_idols(size: Union[None, int] = 5) -> list[Idol]:
-    return await Idol.find_all().to_list(size)
+async def get_all_idols(size: Union[None, int] = 5, page: Union[None, int] = 1) -> list[Idol]:
+    return await Idol.find_all().skip((page-1)*size).limit(size).to_list()
 
 
 @router.get("/{id}", response_model=Idol)
