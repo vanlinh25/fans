@@ -1,5 +1,4 @@
-from pydantic import Field
-from typing import Union
+from typing import List, Union
 from beanie import Document
 
 from data.models.video import Video
@@ -10,13 +9,12 @@ class Idol(Document):
     title: Union[str, None] = None
     url: str
     thumbnail: Union[str, None] = None
-    full_image: Union[str, None] = Field(default=None, alias='full')
-    images: list[Image] = []
-    videos: list[Video] = []
+    full_image: Union[str, None] = None
+    images: List[Image] = []
+    videos: List[Video] = []
 
     class Settings:
         name = "fans"
-        use_cache = True
 
 
 Idol.update_forward_refs()

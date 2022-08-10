@@ -1,31 +1,25 @@
-import typing
+from typing import List
 import strawberry
 from strawberry.fastapi import GraphQLRouter
 from data.models.idol import Idol
 
-@strawberry.type
-class IdolDto:
-    id:str
-    url: str
-    title: str
-    thumbnail: str
-    full_image: str
+@strawberry.experimental.pydantic.type(model=Idol)
+class IdolType:
+    title: strawberry.auto
+    url: strawberry.auto
+    thumbnail: strawberry.auto
+    full_image: strawberry.auto
+    # images: strawberry.auto
+    # videos: strawberry.auto
 
-def idol_mapper(idol:Idol)->IdolDto:
-    return IdolDto(idol.id,idol.url,idol.title,idol.thumbnail,idol.full_image)
-
-async def get_idols():
-    idols=[]
-    return [
-        idol_mapper(idol) for idol in idols
-    ]
-
-
+    
 @strawberry.type
 class Query:
-    idols: typing.List[IdolDto] = strawberry.field(resolver=get_idols)
+    @strawberry.field
+    async def idols(self) -> List[IdolType]:
+        return []
 
 
 schema = strawberry.Schema(Query)
 
-graphql_app = GraphQLRouter(schema)
+graphql_app = GraphQLRouter(schema,graphiql=True)

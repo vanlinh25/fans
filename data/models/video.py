@@ -1,11 +1,11 @@
 from pydantic import BaseModel
-from typing import Union
+from typing import List, Union
 
 from data.models.source import Source
 
 
 class Video(BaseModel):
-    sources: list[Source] = []
+    sources: List[Source] = []
     fv_title: Union[str, None] = None
     splash: Union[str, None] = None
 
