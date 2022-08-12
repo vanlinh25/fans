@@ -7,3 +7,4 @@ pydantic==1.9.1
 pymongo==4.2.0
 requests==2.28.1
 strawberry-graphql==0.123.3
+uvicorn==0.17.6
