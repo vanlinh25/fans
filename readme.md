@@ -7,10 +7,18 @@ uvicorn main:app --reload
 
 #### http://localhost:8000/graphql
 
-### Install
+### virtual env
+python -m venv fans
+cd fans
+Scripts\activate.bat
+### write requirements.txt
+#### #1
 pip install pipreqs
 pipreqs . --force
+#### #2 
+pip freeze > requirements.txt
 
+### Install
 pip install -r requirements.txt
 
 ### Deploy 
