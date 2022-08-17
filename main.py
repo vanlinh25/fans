@@ -8,7 +8,7 @@ from services.idol_service import craw_data
 from routes import graphql_route
 
 app = FastAPI()
-
+v1 = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:8080",
@@ -31,6 +31,7 @@ async def app_init():
     scheduler.add_job(craw_data, 'interval', days=1)
     scheduler.start()
 
+v1.include_router(idol_route.router)
+v1.include_router(graphql_route.graphql_app, prefix="/graphql",tags=["Graphql"])
 
-app.include_router(idol_route.router)
-app.include_router(graphql_route.graphql_app, prefix="/graphql",tags=["Graphql"])
+app.mount("/api/v1",v1)

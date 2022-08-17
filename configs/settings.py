@@ -3,9 +3,9 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    app_name: str = "Awesome API"
-    db_url: str = "mongodb://localhost:27017/"
-    db_name: str = "test"
+    APP_NAME: str = "Awesome API"
+    DB_URL: str = "mongodb://localhost:27017/"
+    DB_NAME: str = "test"
 
     class Config:
         env_file = ".env"
