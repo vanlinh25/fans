@@ -2,8 +2,8 @@ import motor.motor_asyncio
 from beanie import init_beanie
 import pymongo
 
-from data.models.idol import Idol
-from configs.settings import get_settings
+from fans.data.models.idol import Idol
+from fans.configs.settings import get_settings
 
 
 async def initDB():

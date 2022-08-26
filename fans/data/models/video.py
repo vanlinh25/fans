@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import List, Union
 import strawberry
 
-from data.models.source import Source
+from fans.data.models.source import Source
 
 
 class Video(BaseModel):

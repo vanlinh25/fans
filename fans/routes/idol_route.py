@@ -2,7 +2,7 @@ from beanie import PydanticObjectId
 from fastapi import APIRouter
 from typing import Union
 
-from data.models.idol import Idol
+from fans.data.models.idol import Idol
 
 router = APIRouter(prefix="/idols", tags=["Idols"])
 

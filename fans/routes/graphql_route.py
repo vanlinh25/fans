@@ -3,8 +3,8 @@ import strawberry
 from strawberry.fastapi import GraphQLRouter
 from bson.objectid import ObjectId
 
-from configs.db import getDB
-from data.models.idol import Idol, IdolType
+from fans.configs.db import getDB
+from fans.data.models.idol import Idol, IdolType
 
 @strawberry.type
 class Query:

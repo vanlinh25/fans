@@ -2,8 +2,8 @@ from typing import List, Union
 from beanie import Document
 import strawberry
 
-from data.models.video import Video
-from data.models.image import Image
+from fans.data.models.video import Video
+from fans.data.models.image import Image
 
 class Idol(Document):
     title: Union[str, None] = None

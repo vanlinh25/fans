@@ -1,14 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from apscheduler.schedulers.background import BackgroundScheduler
+import subprocess
 
-from configs.db import initDB
-from routes import idol_route
-from services.idol_service import craw_data
-from routes import graphql_route
+from fans.configs.db import initDB
+from fans.routes import idol_route
+from fans.services.idol_service import craw_data
+from fans.routes import graphql_route
 
 app = FastAPI()
 v1 = FastAPI()
+
 origins = [
     "http://localhost",
     "http://localhost:8080",
@@ -35,3 +37,9 @@ v1.include_router(idol_route.router)
 v1.include_router(graphql_route.graphql_app, prefix="/graphql",tags=["Graphql"])
 
 app.mount("/api/v1",v1)
+
+def start():
+    subprocess.run("uvicorn fans.main:app --reload".split())
+    
+def deploy():
+    subprocess.run("gunicorn -w 4 -k uvicorn.workers.UvicornWorker fans.main:app".split())
